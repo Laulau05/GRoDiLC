@@ -28,6 +28,10 @@ $GRoDiLC-Immobs-theme: mat.define-light-theme((
   )
 ));
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -36,4 +40,78 @@ $GRoDiLC-Immobs-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #f1f4f8;
+}
+
+
+.mat-mdc-button.mat-mdc-button-base, .mat-mdc-raised-button.mat-mdc-button-base, .mat-mdc-unelevated-button.mat-mdc-button-base, .mat-mdc-outlined-button.mat-mdc-button-base {
+  height: 51px;
+  border-radius: 32px;
+}
+
+app-svg {
+  @apply block
+  }
+
+  .active-item{
+    color: #0fad07 !important;
+    background-color: rgba(0,0,0,.02);
+  }
+  
+  .active-border{
+    border: 1px solid #0fad07;
+  }
+  
+  .bg-primary{
+    background-color: #0fad07;
+  }
+  
+  .active-text{
+    color: #0fad07 !important;
+  }
+  
+  .icon-button {
+    transition: 300ms;
+    @apply w-10 h-10 rounded-full flex-none flex justify-center items-center text-gray-400 hover:text-gray-500 hover:bg-gray-400/30
+    }
+  
+  
+  .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    top: -5px;
+    right: -5px;
+  }
+  
+  app-page-header {
+    @apply flex-none flex flex-row items-center justify-between w-full
+    }
+
+    .btn-submit button{
+      border-radius: 32px !important;
+      padding: 0 30px !important;
+    }
+    .button-primary {
+      transition: 300ms;
+      @apply bg-primary text-gray-100 text-base px-4 py-2 rounded-full hover:shadow-md flex flex-row items-center justify-center gap-2
+      }
+    
+    .button{
+      @apply text-gray-300 text-base px-4 py-2 rounded-full hover:shadow-md flex flex-row items-center justify-center gap-2
+      }
+    
+    .button-gray {
+      @apply bg-gray-200 text-gray-500
+      }
+    
+    .button-red {
+      @apply bg-red-500 text-white
+      }
+    
+    .mat-dialog-content {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: calc(100vh - 100px) !important;
+      max-height: calc(100vh - 100px) !important;
+    }
