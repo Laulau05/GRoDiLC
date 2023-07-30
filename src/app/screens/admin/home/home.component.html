@@ -3,4 +3,11 @@
       page_title="Tableau de board analytique"
       sub_title="Surveiller les mesures, vérifier les rapports et examiner les performances"
     ></app-page-header>
+    <div class="pt-5">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div *ngFor="let item of historics">
+                <app-historic-card [historic]="item"></app-historic-card>
+            </div>
+        </div>
+    </div>
 </div>

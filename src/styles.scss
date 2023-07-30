@@ -115,3 +115,12 @@ app-svg {
       height: calc(100vh - 100px) !important;
       max-height: calc(100vh - 100px) !important;
     }
+
+    mat-dialog-content{
+      min-height: 600px;
+    }
+
+    app-locataire-item{
+      transition: 300ms;
+      @apply relative flex-none px-5 py-3 rounded-xl hover:shadow-lg bg-white flex flex-col justify-center items-center gap-3
+    }

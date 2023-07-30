@@ -1,0 +1,54 @@
+<div class="relative bg-gray-100">
+    <mat-dialog-content>
+      <div class="w-[900px] h-full flex flex-col">
+        <div class="bg-white flex-none w-full px-5 pt-8 pb-3 flex flex-col md:flex-row gap-3 justify-between">
+          <div class="flex flex-row items-center gap-4">
+            <div class="flex-none w-[120px] h-[120px] bg-gray-200 border-4 border-gray-300 rounded-full"></div>
+            <div class="w-full">
+              <div class="text-lg text-gray-500 font-medium">
+                {{locataire.firstname}}, {{locataire.lastname}}
+              </div>
+              <div class="text-sm text-gray-400">
+                {{locataire.poste}}
+              </div>
+              <div class="text-sm text-gray-400">
+                38 ans
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-row gap-3 h-[30px] justify-end">
+            <button class="button-primary button-red">
+              <app-svg class="w-5" icon="delete"></app-svg>
+              <span class="block">Supprimer</span>
+            </button>
+          </div>
+        </div>
+        <div class="bg-gray-100">
+          <mat-tab-group class="w-full h-full">
+  
+            <mat-tab label="Informations">
+              <div class="p-3 md:p-5">
+                <!-- <agyl-user-equipments></agyl-user-equipments> -->
+              </div>
+            </mat-tab>
+  
+            <mat-tab label="Documents">
+              <div class="p-3 md:p-5">
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </mat-dialog-content>
+  
+    <!-- Close modal button -->
+    <div class="absolute top-2 right-2 z-50">
+      <button
+        [mat-dialog-close]="false"
+        aria-label="close"
+        class="h-8 w-8 rounded-full bg-gray-400 text-gray-100 shadow flex justify-center items-center">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  

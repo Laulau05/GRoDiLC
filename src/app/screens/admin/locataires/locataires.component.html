@@ -2,5 +2,18 @@
     <app-page-header
       page_title="Listes des locataires"
       sub_title="Surveiller les mesures, vérifier les rapports et examiner les performances"
-    ></app-page-header>
+    >
+    <button class="button-primary">
+        <app-svg class="w-5" icon="add_person"></app-svg>
+        <span class="hidden sm:block">Ajouter</span>
+    </button>
+    </app-page-header>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5">
+        <ng-container *ngFor="let item of locataires">
+          <app-locataire-item
+            class="border rounded-md overflow-hidden"
+            [locataire]="item">
+          </app-locataire-item>
+        </ng-container>
+    </div>
 </div>

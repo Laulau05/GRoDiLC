@@ -7,5 +7,30 @@ import { Component } from '@angular/core';
   ]
 })
 export class HomeComponent {
-
+  historics: any[] = [
+    {
+      id: 1,
+      title: "Paiements",
+      quantity: 12,
+      icon: "payment"
+    },
+    {
+      id: 2,
+      title: "Locataires",
+      quantity: 22,
+      icon: "agents"
+    },
+    {
+      id: 3,
+      title: "Immeubles",
+      quantity: 32,
+      icon: "building"
+    },
+    {
+      id: 4,
+      title: "Documents",
+      quantity: 42,
+      icon:"doc"
+    }
+  ]
 }

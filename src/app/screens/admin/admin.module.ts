@@ -9,6 +9,8 @@ import { ImmeubleComponent } from './immeuble/immeuble.component';
 import { LocatairesComponent } from './locataires/locataires.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { PaiementComponent } from './paiement/paiement.component';
+import { SvgModule } from 'src/app/shared/svg/svg.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { PaiementComponent } from './paiement/paiement.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    CoreModule
+    CoreModule,
+    SvgModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

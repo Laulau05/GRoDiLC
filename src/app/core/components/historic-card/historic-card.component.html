@@ -1,0 +1,10 @@
+<div class="bg-white rounded-md p-4 flex flex-col gap-2">
+    <p class="flex items-center justify-between">
+        <span class="text-gray-600">{{ historic.title }}</span>
+        <span class="icon-button border"><app-svg [icon]="historic.icon" class="w-5"></app-svg> </span>
+    </p>
+    <p class="flex items-center justify-between">
+        <span class="font-semibold text-gray-800">{{ historic.quantity }}</span>
+        <span class="bg-[#0fad07]/20 text-sm py-1 px-2 rounded-md">+12</span>
+    </p>
+</div>
