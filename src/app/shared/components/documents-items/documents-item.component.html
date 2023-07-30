@@ -1,0 +1,13 @@
+<div class="flex justify-between flex-col md:flex-row gap-5">
+    <div class="flex flex-row flex-wrap gap-5">
+      <ng-container *ngFor="let item of documents">
+        <app-document-item class="cursor-pointer" [document]="item"
+                          [ngClass]="selectDocument?.code == item.code ? 'active-border' : ''"
+          (click)="selectDocumentMethod(item)"
+        ></app-document-item>
+      </ng-container>
+    </div>
+    <div *ngIf="selectDocument">
+      <app-document-item-show [documentSelect]="selectDocument"></app-document-item-show>
+    </div>
+</div>

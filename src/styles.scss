@@ -124,3 +124,34 @@ app-svg {
       transition: 300ms;
       @apply relative flex-none px-5 py-3 rounded-xl hover:shadow-lg bg-white flex flex-col justify-center items-center gap-3
     }
+
+
+    app-document-item{
+      transition: 300ms;
+      height: 100px;
+      min-width: 120px;
+      @apply relative flex-none px-5 py-3 rounded-xl hover:shadow-lg bg-white flex flex-col justify-center items-center gap-3
+    }
+    
+    app-document-item-show{
+      transition: 300ms;
+      min-width: 350px;
+      @apply relative flex-none px-5 py-3 rounded-xl hover:shadow-lg bg-white flex flex-col justify-center gap-3;
+    
+      .doc{
+        &-image{
+          background: #F2F2F2;
+          border: 1px solid #E0E0E0;
+          border-radius: 10px;
+          min-height: 180px;
+          @apply flex justify-center items-center
+          }
+        ul{
+          li{
+            span{
+              color: #4F4F4F;
+            }
+          }
+        }
+      }
+    }

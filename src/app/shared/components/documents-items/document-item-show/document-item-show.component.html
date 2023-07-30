@@ -1,0 +1,41 @@
+<div class="doc flex flex-col gap-4">
+    <div class="doc-image">
+      <app-svg class="w-24 h-24" icon="file"></app-svg>
+      <app-svg class="h-8 w-8 absolute left-5 top-40" icon="pdf"></app-svg>
+    </div>
+    <h3 class="font-medium mb-2">Document #{{ documentSelect?.code }}</h3>
+    <ul>
+      <h4 class="border-b pb-2">{{ documentSelect?.name }}</h4>
+      <li class="flex justify-between items-center border-b py-2">
+        <span clas="">Ajouter par</span>
+        <p class="font-medium text-base">{{ documentSelect?.user?.name }}</p>
+      </li>
+      <li class="flex justify-between items-center border-b py-2">
+        <span clas="">Créé le</span>
+        <p class="font-medium text-base">{{ documentSelect?.created_at}}</p>
+      </li>
+      <li class="flex justify-between items-center border-b py-2">
+        <span clas="">Modifié le</span>
+        <p class="font-medium text-base">{{ documentSelect?.updated_at }}</p>
+      </li>
+      <li class="flex justify-between items-center border-b py-2">
+        <span clas="">Taille</span>
+        <p class="font-medium text-base">{{ documentSelect?.Taille }}</p>
+      </li>
+    </ul>
+    <div>
+      <p>Description</p>
+      <p class="text-gray-500">{{ documentSelect?.description }}</p>
+    </div>
+    <div class="flex justify-between mt-2">
+      <button class="button-primary">
+        <app-svg class="w-5" icon="download"></app-svg>
+        <span>Télécharger</span>
+      </button>
+      <button class="button button-red">
+        <app-svg class="w-5" icon="delete"></app-svg>
+        <span>Supprimer</span>
+      </button>
+    </div>
+  </div>
+  
