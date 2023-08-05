@@ -4,7 +4,7 @@ module.exports = model;
 
 function model(sequelize) {
     const attributs = {
-        name: { type: DataTypes.STRING, require },
+        libelle: { type: DataTypes.STRING, allowNull: false },
         description: { type: DataTypes.STRING },
         address: DataTypes.STRING,
         photo: DataTypes.STRING,

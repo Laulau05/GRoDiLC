@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-// const appRouters = require('./routes');
+const appRouters = require('./routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,9 +15,9 @@ app.use(cors({
 const db = require('./config/db');
 
 // api routes
-// appRouters.forEach((router) => {
-//     app.use('/api/v1', router);
-// });
+appRouters.forEach((router) => {
+    app.use('/api/v1', router);
+});
 
 // Appel de la fonction initialize de manière asynchrone
 async function startServer() {

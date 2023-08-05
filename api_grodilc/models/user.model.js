@@ -5,7 +5,7 @@ module.exports = model;
 
 function model(sequelize) {
     const attributs = {
-        firstName: { type: DataTypes.STRING, require },
+        firstName: { type: DataTypes.STRING, allowNull: false },
         name: { type: DataTypes.STRING },
         lastName: DataTypes.STRING,
         email: { type: DataTypes.STRING, unique: 'email' },
@@ -13,7 +13,7 @@ function model(sequelize) {
         password: { type: DataTypes.STRING },
         roleId: { type: DataTypes.INTEGER, defaultValue: 1 },
         photo: DataTypes.STRING,
-        cni: { type: DataTypes.STRING, unique: 'cni', require, length: 9  },
+        cni: { type: DataTypes.STRING, unique: 'cni', allowNull: false, length: 9  },
         enabled: { type: DataTypes.BOOLEAN, defaultValue: true },
     }
 
