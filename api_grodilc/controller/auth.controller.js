@@ -1,5 +1,5 @@
 const userService = require('../services/users.service');
-const { hashPassword } = require('../utils/helpers');
+const { hashPassword, isPassMatched } = require('../utils/helpers');
 const generateToken = require('../utils/generateToken');
 
 
