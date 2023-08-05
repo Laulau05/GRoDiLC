@@ -43,13 +43,14 @@ class AuthControllers {
 
         //compare password
         //verify password
-        const isMatched = await isPassMatched(password, user.password);
+        const isMatched = await isPassMatched(password, userFound.password);
 
         if(!isMatched) {
             return res.json({ message: "invalid login credentials" });
         }else{
+            console.log(userFound);
             return res.json({ 
-                data: generateToken(user._id),
+                data: generateToken(userFound._id),
                 message: "user logged in successfully"
             });
         }
