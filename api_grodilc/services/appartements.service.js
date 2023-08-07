@@ -21,7 +21,7 @@ async function getAppartementById(id){
     return appartement;
 }
 
-async function getAppartementByUserId(id){
+async function getAppartementByImmeubleId(id){
     const appartement = await db.appartement.findOne({where: {userId: id}});
     return appartement;
 }
