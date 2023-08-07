@@ -10,75 +10,75 @@ export class LocatairesComponent {
   locataires: any[] = [
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Feupouo',
+      lastname: 'Laureen',
       num_appartement: 4
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Tchuenwouo',
+      lastname: 'Rosalie',
       poste: 'Prof. Developpement web'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'Architecte reseau'
+      firstname: 'Ouoham',
+      lastname: 'Diane',
+      poste: 'CEO'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: "Prof. Gestion des SI "
+      firstname: 'Simo',
+      lastname: 'Christine',
+      poste: "Infirmiere "
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Noumbissie',
+      lastname: 'Guy-Bertrand',
       poste: 'Comptable generale'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'Negociation informatique'
+      firstname: 'Simeu',
+      lastname: 'Laura',
+      poste: 'Avocate'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Noumbissie',
+      lastname: 'Melanie',
       poste: 'Prof. Francais/Anglais'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Kamguia',
+      lastname: 'David-Erwan',
       poste: 'Prof. Genie Logiciel'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Nghomsi',
+      lastname: 'Vaik-Yohan',
       poste: 'Prof. Maintenance informatique'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Njuimo',
+      lastname: 'Carnegie',
+      poste: 'Cardiologue'
+    },
+    {
+      image: '',
+      firstname: 'Pouani',
+      lastname: 'David',
       poste: 'Scrum Master'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'Scrum Master'
-    },
-    {
-      image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'Scrum Master'
+      firstname: 'Yimga',
+      lastname: 'Ericka',
+      poste: 'DevOpps'
     },
   ]
 }

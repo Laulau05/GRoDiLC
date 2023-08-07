@@ -23,10 +23,10 @@ function model(sequelize) {
         const salt = await bcrypt.genSalt(10);
         const userDefault = {
             firstName: 'John',
-            name: 'John Doe',
-            lastName: 'Doe',
+            name: 'John DOE',
+            lastName: 'DOE',
             email: 'admin@gmail.com',
-            phoneNumber: '+237000000000',
+            phoneNumber: '+237690000000',
             photo: '',
             cni: '123456789',
             photo: 'https://www.w3schools.com/howto/img_avatar.png',
