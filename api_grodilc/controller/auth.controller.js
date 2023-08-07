@@ -8,7 +8,7 @@ class AuthControllers {
     //register
     async register(req, res, next){
         try {
-            const { name, email, password } = req.body;
+            const { firstName, lastName, phoneNumber, cni, email, password } = req.body;
             const userFound = await userService.getUserByEmail(email);
 
             if(userFound){
@@ -16,7 +16,10 @@ class AuthControllers {
             }
 
             const newUser = await userService.createUser({
-                name, 
+                firstName,
+                lastName,
+                cni,
+                phoneNumber,
                 email, 
                 password: await hashPassword(password)
             });
@@ -48,9 +51,8 @@ class AuthControllers {
         if(!isMatched) {
             return res.json({ message: "invalid login credentials" });
         }else{
-            console.log(userFound);
             return res.json({ 
-                data: generateToken(userFound._id),
+                data: generateToken(userFound.id),
                 message: "user logged in successfully"
             });
         }

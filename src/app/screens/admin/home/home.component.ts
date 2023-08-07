@@ -23,7 +23,7 @@ export class HomeComponent {
     {
       id: 3,
       title: "Immeubles",
-      quantity: 32,
+      quantity: 2,
       icon: "building"
     },
     {
