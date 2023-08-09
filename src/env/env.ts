@@ -1,4 +1,4 @@
 export const env = {
-    localUrl: 'http://localhost:5000/api/v1',
+    localUrl: 'http://localhost:3003/api/v1',
     prodUrl: ''
 }

@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
-    HttpClientModule
   ],
   exports: [
     MaterialModule

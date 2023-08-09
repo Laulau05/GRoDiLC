@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 class User {
@@ -57,19 +56,15 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     };
 
-    // Simule une action asynchrone (par exemple, une requête HTTP)
-    setTimeout(() => {
-      this.authService.login(user).subscribe(
-        (res: User | any) => {
-          this.authService.setToken(res.data);
-          this.isSubmitting = false;
-          console.log(res);
-        },
-        (err: any) => {
-          console.log(err);
-        }
-      )
-      this.isSubmitting = false;
-    }, 2000);
+    this.authService.login(user).subscribe(
+      (res: User | any) => {
+        this.authService.setToken(res.data);
+        this.isSubmitting = false;
+        console.log(res);
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    )
   }
 }

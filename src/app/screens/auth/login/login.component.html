@@ -9,7 +9,7 @@
         <p class="mt-3 text-xl text-center text-gray-600 font-medium">
             Bienvenue sur GRODILC !
         </p>
-        <form class="flex flex-col gap-2" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <form class="flex flex-col gap-2" [formGroup]="loginForm">
             <div class="w-fit">
                 <mat-form-field class="mt-4 max-w-full w-[350px]" appearance="fill">
                     <mat-label >Email</mat-label>
@@ -35,9 +35,11 @@
             </div>
 
             <div class="mt-6 text-center btn-submit">
-                <button class="w-full h-23" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isSubmitting">
-                    <span *ngIf="!isSubmitting">Se connecter</span>
-                    <mat-spinner *ngIf="isSubmitting" diameter="20"></mat-spinner>
+                <button *ngIf="!isSubmitting" (click)="onSubmit()" class="w-full h-23" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isSubmitting">
+                    <span>Se connecter</span>
+                </button>
+                <button *ngIf="isSubmitting" class="w-full h-23" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isSubmitting">
+                    <mat-spinner diameter="20"></mat-spinner>
                 </button>
             </div>
         </form>

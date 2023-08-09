@@ -4,7 +4,6 @@ const db = require('../config/db');
 module.exports = {
     getAllAppartements,
     getAppartementById,
-    getAppartementByUserId,
     createAppartement,
     updateAppartement,
     deleteAppartement
