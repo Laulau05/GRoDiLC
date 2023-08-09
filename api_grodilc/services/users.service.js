@@ -9,7 +9,7 @@ module.exports = {
     updateUser,
     deleteUser,
     desactivateUser,
-    activateUser
+    activateUser,
 }
 
 async function getAllUsers(){

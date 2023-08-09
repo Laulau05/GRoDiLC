@@ -4,7 +4,7 @@ const isLogin = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {
         const token = authHeader.split(' ')[1];
-        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        jwt.verify(token, "anyKey", (err, user) => {
             if (err) {
                 return res.status(498).json({message: "Token expiré"});
             }

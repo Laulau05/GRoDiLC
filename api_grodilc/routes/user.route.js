@@ -1,14 +1,17 @@
-const authController = require(`../controller/users.controller`);
-const isAdmin = require('../middlewares/isAdmin')
+const userController = require(`../controller/user.controller`);
+const isLogin = require('../middleware/isLogin');
+const isAdmin = require('../middleware/isAdmin')
+
 const express = require(`express`);
 const userRouter = express.Router();
 const path = `/users`;
 
 
-userRouter.get(`${path}`, authController.read);
-userRouter.get(`${path}/:id`, authController.getUserById);
-userRouter.post(`${path}`, authController.create);
-userRouter.put(`${path}/update/:id`, isAdmin, authController.update);
-userRouter.delete(`${path}/:id`, authController.delete);
+userRouter.get(`${path}/`, isLogin, userController.read);
+userRouter.get(`${path}/:id`, isLogin, userController.getUserById);
+userRouter.post(`${path}`, isLogin, isAdmin, userController.create);
+userRouter.put(`${path}/update/:id`, isLogin, isAdmin, userController.update);
+userRouter.delete(`${path}/:id`, isLogin, userController.delete);
+userRouter.get(`${path}/login/current`, isLogin, userController.fetchCurentUser);
 
 module.exports = userRouter;
