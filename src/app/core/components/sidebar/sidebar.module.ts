@@ -6,6 +6,8 @@ import { SidebarMenuItemComponent } from './sidebar-menu-item/sidebar-menu-item.
 import {SvgModule} from "../../../shared/svg/svg.module";
 import { SidebarFooterComponent } from './sidebar-footer/sidebar-footer.component';
 import { UsersService } from 'src/app/services/users.service';
+import {MatMenuModule} from '@angular/material/menu';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 
 
 
@@ -21,7 +23,9 @@ import { UsersService } from 'src/app/services/users.service';
   ],
   imports: [
     CommonModule,
-    SvgModule
+    SvgModule,
+    MatMenuModule,
+    MaterialModule
   ],
   providers: [
     UsersService

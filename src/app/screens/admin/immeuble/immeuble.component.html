@@ -3,9 +3,26 @@
       page_title="Immeubles et appartements"
       sub_title="Surveiller les mesures, vérifier les rapports et examiner les performances"
     >
-    <button class="button-primary">
+    <button class="button-primary" (click)="openDialog('Add')">
         <app-svg class="w-5" icon="building"></app-svg>
         <span class="hidden sm:block">Ajouter</span>
     </button>
     </app-page-header>
+    <div class="flex flex-col flex-auto min-w-0">
+
+      <!-- Main -->
+      <div class="flex-auto p-6 sm:p-10">
+
+  
+          <div class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
+              <!-- Loader -->
+              <!-- <div
+                  class="absolute inset-x-0 bottom-0"
+                  *ngIf="isLoading$|async">
+                  <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+              </div> -->
+  
+          </div>
+      </div>
+    </div>
 </div>

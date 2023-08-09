@@ -20,7 +20,6 @@ export class SidebarHeaderComponent implements OnInit, OnDestroy {
     this.userSubscription = this.usersService.currentUser$.subscribe(
       (user: USERS | any) => {
         this.currentUser = user?.data;
-        console.log("==>", this.currentUser)
       }
     );
   }

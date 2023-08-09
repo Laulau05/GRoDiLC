@@ -11,13 +11,13 @@ import { DocumentsComponent } from './documents/documents.component';
 import { PaiementComponent } from './paiement/paiement.component';
 import { SvgModule } from 'src/app/shared/svg/svg.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ImmeubleModule } from './immeuble/immeuble.module';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     HomeComponent,
-    ImmeubleComponent,
     LocatairesComponent,
     DocumentsComponent,
     PaiementComponent
@@ -27,7 +27,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AdminRoutingModule,
     CoreModule,
     SvgModule,
-    SharedModule
+    SharedModule,
+    ImmeubleModule
   ]
 })
 export class AdminModule { }
