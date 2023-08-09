@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
+class User {
+  email!: string;
+  password!: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -15,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router){}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService){}
 
   ngOnInit(): void{
     this.loginForm = this.formBuilder.group({
@@ -46,19 +52,23 @@ export class LoginComponent implements OnInit {
 
     this.isSubmitting = true;
 
-    
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
-
-    // Vérification du domaine de l'e-mail
-    if (!email.endsWith('@myiuc.com')) {
-      alert('Veuillez utiliser une adresse e-mail de type @myiuc.com');
-      this.isSubmitting = false;
-      return;
-    }
+    const user: User = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
 
     // Simule une action asynchrone (par exemple, une requête HTTP)
     setTimeout(() => {
+      this.authService.login(user).subscribe(
+        (res: User | any) => {
+          this.authService.setToken(res.data);
+          this.isSubmitting = false;
+          console.log(res);
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
       this.isSubmitting = false;
     }, 2000);
   }
