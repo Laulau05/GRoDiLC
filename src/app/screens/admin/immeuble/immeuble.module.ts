@@ -4,7 +4,8 @@ import { ImmeubleComponent } from './immeuble.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormComponent } from './form/form.component';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ImmeubleService } from 'src/app/services/immeuble.service';
 
 
 @NgModule({
@@ -15,7 +16,11 @@ import { FormComponent } from './form/form.component';
   imports: [
     CommonModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    MatProgressBarModule,
+  ],
+  providers: [
+    ImmeubleService
   ]
 })
 export class ImmeubleModule { }

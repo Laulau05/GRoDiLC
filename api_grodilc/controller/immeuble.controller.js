@@ -58,8 +58,14 @@ class immeublesControllers {
 
     async createImmeuble(req, res, next){
         try {
-            const immeuble = req.body;
-            const createdImmeuble = await immeubleService.createImmeuble(immeuble);
+            const { libelle, description, adress, userId } = req.body;
+            const Id = req.user.id;
+            const createdImmeuble = await immeubleService.createImmeuble({
+                libelle,
+                description,
+                adress,
+                userId: Id
+            })
             return res.status(200).json({
                 success: true,
                 message: "immeuble created successfully",

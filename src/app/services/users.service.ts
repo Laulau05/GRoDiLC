@@ -23,7 +23,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) {
     this.fetchCurrentUser();
-    }
+  }
 
   // Get all users use observable
   getAllUsers(): Observable<USERS[]> {

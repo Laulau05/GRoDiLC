@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
+import { ImmeubleService } from 'src/app/services/immeuble.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { ImmeubleState } from 'src/app/state';
+import { Immeuble } from 'src/app/state/immeuble/immeuble.model';
+import { GetImmeubles } from 'src/app/state/immeuble/immeuble.action';
 
 export enum ActionModal {
   Add = 'Add',
@@ -14,9 +21,18 @@ export enum ActionModal {
   styles: [
   ]
 })
-export class ImmeubleComponent {
+export class ImmeubleComponent implements OnInit {
 
-  constructor(private _matDialog: MatDialog){}
+  @Select(ImmeubleState.selectStateData) immeubles$!: Observable<Immeuble[]>; //ici nous allons recuperer les données
+  isLoading$: boolean = false;
+  immeubles: any;
+
+  constructor(
+    private _matDialog: MatDialog, 
+    private immeubleService: ImmeubleService, 
+    private route: ActivatedRoute,
+    private store: Store
+  ){}
 
   openDialog(type: string, immeuble: any = null): void {
     switch(type) {
@@ -31,7 +47,7 @@ export class ImmeubleComponent {
         this._matDialog.open(FormComponent, {
           autoFocus: false,
           panelClass: 'scrollModal',
-          data: {}
+          data: {immeuble: immeuble}
         })
         break;
       case ActionModal.Delete:
@@ -53,5 +69,20 @@ export class ImmeubleComponent {
 
     }
   }
+
+  ngOnInit(): void {
+    this.isLoading$ = true
+    setTimeout(() => {
+      //dispatch data
+      this.store.dispatch(new GetImmeubles())
+      this.isLoading$ = false
+      // Utilisez l'observable pour surveiller les changements
+      this.immeubles$.subscribe(immeubles => {
+        this.immeubles = immeubles;
+      });
+    }, 2000)
+  }
+
+  
 
 }

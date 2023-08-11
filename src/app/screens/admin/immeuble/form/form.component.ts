@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngxs/store';
+import { ImmeubleService } from 'src/app/services/immeuble.service';
+import { AddImmeuble, UpdateImmeuble } from 'src/app/state/immeuble/immeuble.action';
 
 @Component({
   selector: 'app-form',
@@ -9,10 +12,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class FormComponent implements OnInit {
 
   immeubleForm!: FormGroup;
+  isSubmitting!: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    public dialog: MatDialogRef<FormComponent>
+    public dialog: MatDialogRef<FormComponent>,
+    private immeubleService: ImmeubleService,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -21,10 +28,51 @@ export class FormComponent implements OnInit {
       description: ['', Validators.required],
       adress: ['', Validators.required],
     })
-    if(this.data.immeuble){
+    if(this.data && this.data.immeuble){
+      const immeuble = this.data.immeuble
       this.immeubleForm.patchValue({
-        libelle: this.data.immeuble.libelle
+        libelle: immeuble.libelle,
+        description: immeuble.description,
+        adress: immeuble.address
       })
+    }
+  }
+
+  //create immeuble
+  onSubmit(){
+
+    const immeubleObject = {
+      libelle: this.immeubleForm.value.libelle,
+      description: this.immeubleForm.value.description,
+      address: this.immeubleForm.value.adress
+    }
+
+    if(this.immeubleForm.invalid){
+      return;
+    }
+
+    this.isSubmitting = true;
+
+    if(!this.data.immeuble){
+      this.store.dispatch(new AddImmeuble(immeubleObject)).subscribe(
+        (res) => {
+          this.closeDialog();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      this.isSubmitting = false;
+    }else{
+      this.store.dispatch(new UpdateImmeuble(immeubleObject, this.data.immeuble.id)).subscribe(
+        (res) => {
+          this.closeDialog();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      this.isSubmitting = false;
     }
   }
 

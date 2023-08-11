@@ -4,11 +4,14 @@ import { SvgModule } from './svg/svg.module';
 import { MaterialModule } from './material/material.module';
 import { LocataireItemModule } from './components/locataire-item/locataire-item.module';
 import { DocumentsItemModule } from './components/documents-items/documents-item.module';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TruncatePipe
+  ],
   imports: [
     CommonModule,
     SvgModule,
@@ -20,7 +23,8 @@ import { DocumentsItemModule } from './components/documents-items/documents-item
     SvgModule,
     MaterialModule,
     LocataireItemModule,
-    DocumentsItemModule
+    DocumentsItemModule,
+    TruncatePipe
   ]
 })
 export class SharedModule { }

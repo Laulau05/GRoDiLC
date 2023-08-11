@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './api/auth.interceptor';
+import { NgxsModule } from '@ngxs/store';
+import { ImmeubleState } from './state';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { AuthInterceptor } from './api/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxsModule.forRoot([ImmeubleState]),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

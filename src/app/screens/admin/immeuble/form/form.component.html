@@ -6,52 +6,40 @@
                     class="flex-auto gt-xs:pr-3">
                     <mat-label>Libelle</mat-label>
                     <input req formControlName="libelle" matInput>
-                    <mat-icon 
-                        class="icon-size-5"
-                        matSuffix
-                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
                 </mat-form-field>
                 <mat-form-field
                     class="flex-auto gt-xs:pr-3">
                     <mat-label>Desciption</mat-label>
-                    <textarea req formControlName="libelle" matInput></textarea>
-                    <mat-icon 
-                        class="icon-size-5"
-                        matSuffix
-                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                    <textarea req formControlName="description" matInput></textarea>
                 </mat-form-field>
                 <mat-form-field
                     class="flex-auto gt-xs:pr-3">
-                    <mat-label>adress</mat-label>
+                    <mat-label>Adresse</mat-label>
                     <input req formControlName="adress" matInput>
-                    <mat-icon 
-                        class="icon-size-5"
-                        matSuffix
-                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
                 </mat-form-field>
             </div>
         </div>
 
-        <!-- Edit Actions -->
+        
         <ng-container>
             <div class="flex items-center justify-between mt-4">
                 <div class="flex items-center space-x-2">
-                    <button type="button" (click)="closeDialog()"
+                    <button class="button" type="button" (click)="closeDialog()"
                         mat-flat-button>
                         Fermer
                     </button>
                 </div>
                 
                 <button
-                    class="fuse-mat-button-large mt-6"
+                    (click)="onSubmit()"
+                    class="fuse-mat-button-large mt-6 button-primary"
                     type="button"
-                    mat-flat-button
-                    [color]="'primary'"
-                    [disabled]="!immeubleForm.valid">
-                    <span>
+                    [disabled]="immeubleForm.invalid">
+                    <span *ngIf="!isSubmitting">
                         Enregistrer
                     </span>
                     <mat-progress-spinner
+                        *ngIf="isSubmitting"
                         [diameter]="24"
                         [mode]="'indeterminate'"></mat-progress-spinner>
                 </button>
