@@ -76,7 +76,6 @@ export class ImmeubleComponent implements OnInit {
       //dispatch data
       this.store.dispatch(new GetImmeubles())
       this.isLoading$ = false
-      // Utilisez l'observable pour surveiller les changements
       this.immeubles$.subscribe(immeubles => {
         this.immeubles = immeubles;
       });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 class User {
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService){}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router){}
 
   ngOnInit(): void{
     this.loginForm = this.formBuilder.group({
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
       (res: User | any) => {
         this.authService.setToken(res.data);
         this.isSubmitting = false;
-        console.log(res);
+        this.router.navigate(['/admin']);
       },
       (err: any) => {
         console.log(err);
