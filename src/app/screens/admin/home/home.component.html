@@ -18,7 +18,7 @@
         </div>
         <div class="pt-5">
             <h2 class="text-right text-xl font-bold text-gray-600 leading-4">Appartements disponibles</h2>
-            <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-2">
                 <div class="p-4 rounded bg-white cursor-pointer" (click)="openDialog('Edit', item)"
                     *ngFor="let item of appartements"
                 >
@@ -27,7 +27,7 @@
                     </div>
                     <div class="text-center py-2">
                         <p class="text-gray-600 text-sm">
-                            <span>Immeuble: {{item?.immeubleAssoc?.libelle}}</span> - <span>Num: <strong>#{{item?.numAppartement}}</strong></span>
+                            <span>Appartement: {{item?.immeubleAssoc?.libelle}}</span> - <span>Num: <strong>#{{item?.numAppartement}}</strong></span>
                         </p>
                         <p class="text-gray-600 text-2xl font-semibold">Prix: {{item?.prix}}cfa</p>
                     </div>

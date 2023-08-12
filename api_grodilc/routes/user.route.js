@@ -7,10 +7,10 @@ const userRouter = express.Router();
 const path = `/users`;
 
 
-userRouter.get(`${path}/`, isLogin, userController.read);
+userRouter.get(`${path}/`, isLogin, userController.readLocataire);
 userRouter.get(`${path}/:id`, isLogin, userController.getUserById);
-userRouter.post(`${path}`, isLogin, isAdmin, userController.create);
-userRouter.put(`${path}/update/:id`, isLogin, isAdmin, userController.update);
+userRouter.post(`${path}/create`, isLogin, userController.createLocataire);
+userRouter.put(`${path}/update/:id`, isLogin, userController.updateLocataire);
 userRouter.delete(`${path}/:id`, isLogin, userController.delete);
 userRouter.get(`${path}/login/current`, isLogin, userController.fetchCurentUser);
 

@@ -10,6 +10,8 @@ module.exports = {
     deleteUser,
     desactivateUser,
     activateUser,
+    createLocataire,
+    getAllLocataires
 }
 
 async function getAllUsers(){
@@ -30,6 +32,16 @@ async function getUserByEmail(email){
 async function createUser(user){
     const createdUser = await db.user.create(user);
     return createdUser;
+}
+
+async function createLocataire(locataire){
+    const locataireCreate = await db.locataire.create(locataire)
+    return locataireCreate;
+}
+
+async function getAllLocataires(){
+    const users = await db.locataire.findAll();
+    return users;
 }
 
 async function updateUser(id, user){

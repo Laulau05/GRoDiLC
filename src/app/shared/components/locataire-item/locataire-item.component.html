@@ -2,22 +2,17 @@
     <div class="flex-none w-[120px] h-[120px] bg-gray-200 border-4 border-gray-300 rounded-full"></div>
     <div class="w-full flex flex-col justify-center items-center">
       <div class="text-lg font-medium text-gray-600">
-        {{locataire.firstname}},{{locataire.lastname}}
+        {{locataire.firstName}} - {{locataire.lastName}}
       </div>
       <div class="text-sm text-gray-500">
-        {{locataire.poste}}
+        Num CNI - {{locataire.cni}}
       </div>
     </div>
   </div>
 <div class="w-full flex flex-row divide-x border-t">
     <button
-      (click)="viewDetails()"
       class="w-full flex flex-row gap-2 items-center justify-center text-gray-400 hover:text-gray-500 py-2 px-3">
       <app-svg class="flex-none w-5" icon="see"></app-svg>
       <span class="text-xs line-clamp-1">Voir le profil</span>
-    </button>
-    <button class="w-full flex flex-row gap-2 items-center justify-center text-red-400 hover:text-red-500 py-2 px-3">
-      <app-svg class="flex-none w-5" icon="delete"></app-svg>
-      <span class="text-xs line-clamp-1">Supprimer</span>
     </button>
   </div>

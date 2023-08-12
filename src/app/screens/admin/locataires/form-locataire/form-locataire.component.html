@@ -1,0 +1,54 @@
+<div class="w-[500px] py-4">
+    <h2 class="my-2 text-center"></h2>
+    <div class=" px-4">
+        <form class="w-full" [formGroup]="userForm">
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Nom</mat-label>
+                    <input req matInput placeholder="Ex. Laureen" value="" formControlName="firstName">
+                </mat-form-field>                
+            </div>
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Prenom</mat-label>
+                    <textarea formControlName="lastName" req matInput placeholder="Ex. Laureen"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" req matInput placeholder="670000000" value="">
+                </mat-form-field>                
+            </div>
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Numero CNI</mat-label>
+                    <input formControlName="cni" type="number" req matInput placeholder="" value="">
+                </mat-form-field>                
+            </div>
+
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Numero Telephone</mat-label>
+                    <input formControlName="phoneNumber" req matInput placeholder="670000000" value="">
+                </mat-form-field>                
+            </div>
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Appartement loué</mat-label>
+                    <mat-select formControlName="appartement">
+                        <mat-option *ngFor="let item of appartements" [value]="item.id">
+                            {{item?.libelle}}
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </form>
+    </div>
+
+    <!-- Close modal button -->
+    <mat-dialog-actions align="end">
+        <button class="button-primary" (click)="onSubmit()">Soumettre</button>
+        <button class="button" [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+    </mat-dialog-actions>
+</div>

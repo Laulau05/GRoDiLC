@@ -16,6 +16,7 @@ import { FormAppartementComponent } from './home/form-appartement/form-apparteme
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FormLocataireComponent } from './locataires/form-locataire/form-locataire.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     LocatairesComponent,
     DocumentsComponent,
     PaiementComponent,
-    FormAppartementComponent
+    FormAppartementComponent,
+    FormLocataireComponent
   ],
   imports: [
     CommonModule,

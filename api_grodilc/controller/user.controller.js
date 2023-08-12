@@ -30,22 +30,51 @@ class usersControllers {
     //create
     async create(req, res, next){
         try {
-            const { name, email, password } = req.body;
-            const userFound = await userService.findUsersByEmail(email);
+            const { firstName, lastName, phoneNumber, email, cni } = req.body;
+            const userFound = await userService.getUserByEmail(email);
 
             if(userFound){
                 return res.status(400).json({message: "user already exist"});
             }
 
             const newUser = await userService.createUser({
-                name, 
+                firstName, 
                 email, 
-                password: await hashPassword(password)
+                lastName,
+                cni,
+                phoneNumber
+                // password: await hashPassword(password)
             });
 
             return res.status(201).json({
                 success: true,
                 message: "user created successfully",
+                data: newUser
+            });
+        }catch(error){
+            next(error);
+        }
+    }
+
+    async createLocataire(req, res, next){
+        try {
+            const { firstName, lastName, phoneNumber, email, cni, userId, appartementId } = req.body;
+            const userFound = req.user.id
+
+            const newUser = await userService.createLocataire({
+                firstName, 
+                email, 
+                lastName,
+                cni,
+                phoneNumber,
+                userId: userFound,
+                appartementId
+                // password: await hashPassword(password)
+            });
+
+            return res.status(201).json({
+                success: true,
+                message: "locataire created successfully",
                 data: newUser
             });
         }catch(error){
@@ -60,6 +89,19 @@ class usersControllers {
             return res.status(200).json({
                 success: true,
                 message: "users fetched successfully",
+                data: users
+            });
+        }catch(error){
+            next(error);
+        }
+    }
+
+    async readLocataire(req, res, next){
+        try {
+            const users = await userService.getAllLocataires();
+            return res.status(200).json({
+                success: true,
+                message: "locataires fetched successfully",
                 data: users
             });
         }catch(error){
@@ -87,6 +129,37 @@ class usersControllers {
         const updatedUser = await userService.updateUser(id, {
             name,
             email,
+        })
+
+        return res.status(200).json({
+            success: true,
+            message: "user updated successfully",
+            data: updatedUser
+        });
+       }catch(error){
+           next(error);
+       }
+    }
+
+    async updateLocataire(req, res, next){   
+
+        //get id from params
+        const { id } = req.params;
+       try{
+        
+
+        //get data from body
+        const { firstName, lastName, phoneNumber, email, cni, userId, appartementId } = req.body;
+        const userFound = req.user.id;
+        //update user
+        const updatedUser = await userService.updateUser(id, {
+            firstName,
+            lastName,
+            phoneNumber,
+            cni,
+            appartementId,
+            email,
+            userId: userFound
         })
 
         return res.status(200).json({

@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActionModal } from '../immeuble/immeuble.component';
+import { MatDialog } from '@angular/material/dialog';
+import { FormLocataireComponent } from './form-locataire/form-locataire.component';
+import { Store, Select } from '@ngxs/store';
+import { UserState } from 'src/app/state';
+import { User } from 'src/app/state/user/user.model';
+import { Observable } from 'rxjs';
+import { GetUsers } from 'src/app/state/user/user.action';
 
 @Component({
   selector: 'app-locataires',
@@ -6,79 +14,62 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class LocatairesComponent {
-  locataires: any[] = [
-    {
-      image: '',
-      firstname: 'Feupouo',
-      lastname: 'Laureen',
-      num_appartement: 4
-    },
-    {
-      image: '',
-      firstname: 'Tchuenwouo',
-      lastname: 'Rosalie',
-      poste: 'Prof. Developpement web'
-    },
-    {
-      image: '',
-      firstname: 'Ouoham',
-      lastname: 'Diane',
-      poste: 'CEO'
-    },
-    {
-      image: '',
-      firstname: 'Simo',
-      lastname: 'Christine',
-      poste: "Infirmiere "
-    },
-    {
-      image: '',
-      firstname: 'Noumbissie',
-      lastname: 'Guy-Bertrand',
-      poste: 'Comptable generale'
-    },
-    {
-      image: '',
-      firstname: 'Simeu',
-      lastname: 'Laura',
-      poste: 'Avocate'
-    },
-    {
-      image: '',
-      firstname: 'Noumbissie',
-      lastname: 'Melanie',
-      poste: 'Prof. Francais/Anglais'
-    },
-    {
-      image: '',
-      firstname: 'Kamguia',
-      lastname: 'David-Erwan',
-      poste: 'Prof. Genie Logiciel'
-    },
-    {
-      image: '',
-      firstname: 'Nghomsi',
-      lastname: 'Vaik-Yohan',
-      poste: 'Prof. Maintenance informatique'
-    },
-    {
-      image: '',
-      firstname: 'Njuimo',
-      lastname: 'Carnegie',
-      poste: 'Cardiologue'
-    },
-    {
-      image: '',
-      firstname: 'Pouani',
-      lastname: 'David',
-      poste: 'Scrum Master'
-    },
-    {
-      image: '',
-      firstname: 'Yimga',
-      lastname: 'Ericka',
-      poste: 'DevOpps'
-    },
-  ]
+export class LocatairesComponent implements OnInit {
+
+  @Select(UserState.selectStateData) users$!: Observable<User[]>;
+  isLoading$: boolean = false;
+  locataires: any;
+
+  constructor(
+    private dialog: MatDialog, 
+    private store: Store
+  ){}
+
+  openDialog(type: string, user: any = null): void {
+    switch(type) {
+      case ActionModal.Add:
+        this.dialog.open(FormLocataireComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      case ActionModal.Edit:
+        this.dialog.open(FormLocataireComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {user: user}
+        })
+        break;
+      case ActionModal.Delete:
+        this.dialog.open(FormLocataireComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      case ActionModal.Details:
+        this.dialog.open(FormLocataireComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      default:
+        break;
+
+    }
+  }
+
+  ngOnInit(): void {
+    this.isLoading$ = true
+    setTimeout(() => {
+      //dispatch data
+      this.store.dispatch(new GetUsers())
+      this.isLoading$ = false
+      this.users$.subscribe(users => {
+        this.locataires = users;
+      });
+    }, 2000)
+  }
 }

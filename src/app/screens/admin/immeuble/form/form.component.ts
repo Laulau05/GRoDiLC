@@ -56,6 +56,7 @@ export class FormComponent implements OnInit {
     if(!this.data.immeuble){
       this.store.dispatch(new AddImmeuble(immeubleObject)).subscribe(
         (res) => {
+          alert("immeuble créée avec success")
           this.closeDialog();
         },
         (err) => {

@@ -3,15 +3,21 @@
       page_title="Listes des locataires"
       sub_title="Surveiller les mesures, vérifier les rapports et examiner les performances"
     >
-    <button class="button-primary">
+    <button class="button-primary" (click)="openDialog('Add')">
         <app-svg class="w-5" icon="add_person"></app-svg>
         <span class="hidden sm:block">Ajouter</span>
     </button>
     </app-page-header>
+    <div *ngIf="isLoading$"
+        class="pt-5"
+        >
+        <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5">
         <ng-container *ngFor="let item of locataires">
           <app-locataire-item
-            class="border rounded-md overflow-hidden"
+          (click)="openDialog('Edit', item)"
+            class="border rounded-md overflow-hidden cursor-pointer"
             [locataire]="item">
           </app-locataire-item>
         </ng-container>

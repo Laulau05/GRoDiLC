@@ -37,7 +37,17 @@ export class UsersService {
 
   // Create new user use observable
   createUser(user: any): Observable<any> {
-    return this.http.post<any>(`${env.localUrl}/users`, user)
+    return this.http.post<any>(`${env.localUrl}/users/create`, user)
+  }
+
+  // Update user use observable
+  updateUser(id: string, user: any): Observable<USERS> {
+    return this.http.put<any>(`${env.localUrl}/users/update/${id}`, user)
+  }
+
+  //delete
+  deleteUser(id: string): Observable<USERS> {
+    return this.http.delete<any>(`${env.localUrl}/users/${id}`)
   }
 
   private fetchCurrentUser() {
