@@ -1,6 +1,6 @@
 export interface Immeuble {
     id?: string;
-    name?: string;
+    libelle?: string;
     address?: string;
     description?: string;
 }

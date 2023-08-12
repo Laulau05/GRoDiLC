@@ -1,10 +1,19 @@
 const appartementService = require('../services/appartements.service');
+const db = require('../config/db');
 
 class appartementsControllers {
 
     async getAllAppartements(req, res, next){
         try {
-            const appartements = await appartementService.getAllAppartements();
+            const appartements = await db.appartement.findAll({
+                include: [
+                    {
+                        model: db.immeuble,
+                        as: 'immeubleAssoc',
+                        attributes: ['libelle', 'address']
+                    }
+                ]
+            });
             return res.status(200).json({
                 success: true,
                 message: "appartements fetched successfully",

@@ -12,6 +12,10 @@ import { SvgModule } from 'src/app/shared/svg/svg.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ImmeubleModule } from './immeuble/immeuble.module';
 import { ImmeubleService } from 'src/app/services/immeuble.service';
+import { FormAppartementComponent } from './home/form-appartement/form-appartement.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,8 @@ import { ImmeubleService } from 'src/app/services/immeuble.service';
     HomeComponent,
     LocatairesComponent,
     DocumentsComponent,
-    PaiementComponent
+    PaiementComponent,
+    FormAppartementComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,10 @@ import { ImmeubleService } from 'src/app/services/immeuble.service';
     CoreModule,
     SvgModule,
     SharedModule,
-    ImmeubleModule
+    ImmeubleModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatProgressBarModule,
   ],
   exports: [
   ],

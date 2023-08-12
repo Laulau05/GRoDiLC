@@ -28,9 +28,9 @@ async function initialize() {
     // db.role.hasMany(db.user, {foreignKey: 'roleId'});
     // db.user.belongsTo(db.role, {foreignKey: 'roleId'});
     db.immeuble.hasMany(db.appartement, {as: 'appartement', foreignKey: 'immeubleId'}); //ici on a une relation 1-n
-    db.appartement.belongsTo(db.immeuble, {as: 'immeuble', foreignKey: 'immeubleId'}); //ici la relation est n-1
+    db.appartement.belongsTo(db.immeuble, {as: 'immeubleAssoc', foreignKey: 'immeubleId'}); //ici la relation est n-1
     db.appartement.hasMany(db.locataire, { as: 'locataire' ,foreignKey: 'appartementId'}); //ici on a une relation 1-n
-    db.locataire.belongsTo(db.appartement, {as: 'appartement' ,foreignKey: 'appartementId'}); //ici la relation est n-1
+    db.locataire.belongsTo(db.appartement, {as: 'appartementAssoc' ,foreignKey: 'appartementId'}); //ici la relation est n-1
     db.user.hasMany(db.locataire, {as: 'locataire' ,foreignKey: 'userId'}); //ici on a une relation 1-n
     db.locataire.belongsTo(db.user, {as: 'user' ,foreignKey: 'userId'}); //ici la relation est n-1
     db.user.hasMany(db.document, {as: 'document' ,foreignKey: 'userId'}); //ici on a une relation 1-n

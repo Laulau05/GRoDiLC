@@ -1,0 +1,49 @@
+<div class="w-[500px] py-4">
+    <h2 class="my-2 text-center"></h2>
+    <div class=" px-4">
+        <form class="w-full" [formGroup]="appartementForm">
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Libellé</mat-label>
+                    <input req matInput placeholder="Ex. KM" value="" formControlName="libelle">
+                </mat-form-field>                
+            </div>
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" req matInput placeholder="Ex. appartement a..."></textarea>
+                </mat-form-field>
+            </div>
+            
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Prix mensuel</mat-label>
+                    <input formControlName="prix" type="number" req matInput placeholder="Ex. 80000" value="">
+                </mat-form-field>                
+            </div>
+
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Numero appartement</mat-label>
+                    <input formControlName="numAppartement" type="number" req matInput placeholder="Ex. 2" value="">
+                </mat-form-field>                
+            </div>
+            <div class="">
+                <mat-form-field class="w-full">
+                    <mat-label>Dans qu'elle immeuble</mat-label>
+                    <mat-select formControlName="immeuble">
+                        <mat-option *ngFor="let item of immeubles" [value]="item.id">
+                            {{item?.libelle}}
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </form>
+    </div>
+
+    <!-- Close modal button -->
+    <mat-dialog-actions align="end">
+        <button class="button-primary" (click)="onSubmit()">Soumettre</button>
+        <button class="button" [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+    </mat-dialog-actions>
+</div>
