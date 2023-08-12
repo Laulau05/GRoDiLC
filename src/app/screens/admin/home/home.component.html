@@ -22,14 +22,15 @@
                 <div class="p-4 rounded bg-white cursor-pointer" (click)="openDialog('Edit', item)"
                     *ngFor="let item of appartements"
                 >
-                    <div class="h-[6rem] bg-slate-300/70 rounded flex justify-center items-center">
+                    <div class="h-[6rem] cursor-pointer bg-slate-300/70 rounded flex justify-center items-center">
                         <app-svg class="w-20 text-gray-600" icon="building"></app-svg>
                     </div>
-                    <div class="text-center py-2">
+                    <div class="text-center py-2 cursor-pointer">
                         <p class="text-gray-600 text-sm">
                             <span>Appartement: {{item?.immeubleAssoc?.libelle}}</span> - <span>Num: <strong>#{{item?.numAppartement}}</strong></span>
                         </p>
                         <p class="text-gray-600 text-2xl font-semibold">Prix: {{item?.prix}}cfa</p>
+                        
                     </div>
                 </div>
             </div>

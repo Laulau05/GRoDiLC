@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store, Select } from '@ngxs/store';
-import { AppartementState, ImmeubleState } from 'src/app/state';
+import { AppartementState, ImmeubleState, UserState } from 'src/app/state';
 import { Appartement } from 'src/app/state/appartement/appartement.model';
 import { Observable } from 'rxjs';
 import { ActionModal } from '../immeuble/immeuble.component';
@@ -9,6 +9,8 @@ import { FormAppartementComponent } from './form-appartement/form-appartement.co
 import { GetAppartements } from 'src/app/state/appartement/appartement.action';
 import { Immeuble } from 'src/app/state/immeuble/immeuble.model';
 import { GetImmeubles } from 'src/app/state/immeuble/immeuble.action';
+import { User } from 'src/app/state/user/user.model';
+import { GetUsers } from 'src/app/state/user/user.action';
 
 @Component({
   selector: 'app-home',
@@ -20,26 +22,32 @@ export class HomeComponent implements OnInit {
 
   @Select(AppartementState.selectStateData) appartements$!: Observable<Appartement[]>;
   @Select(ImmeubleState.selectStateData) immeubles$!: Observable<Immeuble[]>;
+  @Select(UserState.selectStateData) users$!: Observable<User[]>;
   isLoading$: boolean = false;
   appartements: any;
+  appartementsNumber!: any;
+  immeublesNumber!: any;
+  usersNumber!: any;
+  users: any;
+  immeubles: any;
 
   historics: any[] = [
     {
       id: 1,
-      title: "Paiements",
-      quantity: 12,
+      title: "Appartements",
+      quantity: this.appartementsNumber,
       icon: "payment"
     },
     {
       id: 2,
       title: "Locataires",
-      quantity: 22,
+      quantity: this.usersNumber,
       icon: "agents"
     },
     {
       id: 3,
       title: "Immeubles",
-      quantity: 2,
+      quantity: this.immeublesNumber,
       icon: "building"
     },
     {
@@ -99,7 +107,30 @@ export class HomeComponent implements OnInit {
       this.isLoading$ = false
       this.appartements$.subscribe(appartements => {
         this.appartements = appartements;
+        this.appartementsNumber = this.appartements?.length
+        this.updateHistorics();
+      });
+
+      this.store.dispatch(new GetUsers())
+    this.users$.subscribe(users => {
+      this.users = users;
+      this.usersNumber = this.users?.length;
+      this.updateHistorics();
+    });
+
+    this.store.dispatch(new GetImmeubles())
+      this.isLoading$ = false
+      this.immeubles$.subscribe(immeubles => {
+        this.immeubles = immeubles;
+        this.immeublesNumber = this.immeubles?.length
+        this.updateHistorics();
       });
     }, 2000)
+  }
+
+  updateHistorics(): void {
+    this.historics[0].quantity = this.appartementsNumber;
+    this.historics[1].quantity = this.usersNumber;
+    this.historics[2].quantity = this.immeublesNumber;
   }
 }
